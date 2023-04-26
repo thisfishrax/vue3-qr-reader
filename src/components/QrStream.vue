@@ -207,7 +207,7 @@ export default defineComponent({
     function repaintTrackingLayer(location) {
       const video = state.video;
       const canvas = state.trackingLayer;
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });;
 
       // The visually occupied area of the video element.
       // Because the component is responsive and fills the available space,
@@ -253,7 +253,7 @@ export default defineComponent({
     }
     function clearTrackingLayer() {
       const canvas = state.trackingLayer;
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });;
 
       window.requestAnimationFrame(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -261,7 +261,7 @@ export default defineComponent({
     }
     function paintPauseFrame(imageData) {
       const canvas = state.pauseFrame;
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });;
 
       window.requestAnimationFrame(() => {
         canvas.width = imageData.width;
@@ -272,7 +272,7 @@ export default defineComponent({
     }
     function clearPauseFrame() {
       const canvas = state.pauseFrame;
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });;
 
       window.requestAnimationFrame(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
